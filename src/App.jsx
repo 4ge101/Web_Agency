@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import './styles/Global.css'
+import BlobCursor from './components/BlobCursor';
 
 import Home from "./pages/Home";
 // import Services from "./pages/Services";
@@ -12,6 +13,8 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
+    <>
+    {/* <BlobCursor/> */}
     <Router>
       <Routes>
         <Route element={<Layout />}>
@@ -25,6 +28,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </>
   );
 }
 
