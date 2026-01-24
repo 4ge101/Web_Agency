@@ -5,7 +5,7 @@
   z-index: 99;
   position: relative;
   gap: 50px;
-  margin: 60px 46px;
+  margin: 60px 46px 0;
   padding: 60px 52px;
 }
 
@@ -14,29 +14,38 @@
   width: 72%;
   text-align: center;
   line-height: 1.1;
-  padding: 0 0 35px;
 }
 
-.title-container h1 span {
+.color-title {
   background: linear-gradient(90deg, #1c3e35, #5b9883, #99f2d1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.title-container h1 span {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.title-container h1 span:hover {
+  transform: scale(1.08);
+}
+
 .title-container p {
-  font-size: 24px;
-  width: 70%;
+  font-size: 22px;
+  width: 50%;
   text-align: center;
-  padding: 35px 0;
+  padding: 0 0 35px;
   color: #9a9191;
 }
 
 .small-title {
-  padding: 50px 0 0;
+  padding: 50px 0 20px;
 }
 
 .small-title span {
   font-size: 20px;
+  font-weight: 300;
   padding: 12px 20px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -53,4 +62,94 @@
   50% {
     background: rgba(255, 255, 255, 0.15);
   }
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9;
+  position: relative;
+}
+
+.your-project-btn button {
+  background: white;
+  color: black;
+  font-size: 20px;
+  border: 1px solid white;
+  border-radius: 40px;
+  padding: 24px 40px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.your-project-btn img {
+  width: 26px;
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+}
+
+.your-project-btn button:hover {
+  background: linear-gradient(90deg, #1c3e35, #5b9883, #99f2d1);
+  transform: scale(1.06);
+  border: 1px solid green;
+}
+
+.your-project-btn button:hover img {
+  transform: rotate(0deg);
+}
+
+.showcase-btn button {
+  color: white;
+  font-size: 20px;
+  border-radius: 40px;
+  padding: 24px 50px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showcase-btn button:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.explore-animation {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.bounce-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.bounce-wrapper p {
+  color: #9a9191;
+  font-weight: 500;
+}
+
+.bounce-wrapper .stick {
+  width: 3px;
+  height: 4vh;
+  background-color: #9a9191;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

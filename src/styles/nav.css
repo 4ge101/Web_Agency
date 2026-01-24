@@ -19,7 +19,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 42px;
+    gap: 38px;
     padding: 26px 34px;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(14px);
@@ -31,7 +31,7 @@ nav {
 nav a {
   text-decoration: none;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .contact-btn button {
@@ -41,4 +41,10 @@ nav a {
   border: 2px solid white;
   padding: 12px 32px;
   border-radius: 30px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.contact-btn button:hover{
+  transform: scale(1.08);
 }

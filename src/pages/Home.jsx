@@ -1,5 +1,7 @@
 import Hyperspeed from "../components/Hyperspeed";
 import "../styles/home.css";
+import Services from "./Services";
+import ArrowIcon from "../assets/icons/arrow.svg";
 
 const Home = () => {
   return (
@@ -45,13 +47,34 @@ const Home = () => {
         <div className="small-title">
           <span>✨Available for new projects</span>
         </div>
-        <h1>SMART <span>SOLUTIONS</span> FOR <span>DIGITAL</span> SUCCESS</h1>
+        <h1>
+          <span>SMART</span> <span className="color-title">SOLUTIONS</span>{" "}
+          <span>FOR</span> <span className="color-title">DIGITAL</span>{" "}
+          <span>SUCCESS</span>
+        </h1>
         <p>
           WE CREATE MODERN, USER-FRIENDLY WEBSITES AND APPS THAT HELP YOUR
           BUSINESS GROW. FROM DESGIN TO DEVELOPMENT, WE TURN YOUR IDEAS INTO
           DIGITAL SOLUTIONS THAT WORK.
         </p>
       </div>
+      <div className="btn-container">
+        <div className="your-project-btn">
+          <button>
+            Start Your Projects <img src={ArrowIcon} alt="arrow-icon" />
+          </button>
+        </div>
+        <div className="showcase-btn">
+          <button>View Showcase</button>
+        </div>
+      </div>
+      <div class="explore-animation">
+        <div class="bounce-wrapper">
+          <p>Scroll to explore</p>
+          <span class="stick"></span>
+        </div>
+      </div>
+      <Services/>
     </div>
   );
 };
