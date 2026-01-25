@@ -1,0 +1,48 @@
+.service-container {
+  padding: 80px 0;
+  margin: 80px 40px;
+}
+
+.service-title h1 {
+  font-size: 110px;
+}
+
+.small-service-title {
+  position: relative;
+  display: inline-block; /* important for positioning the ::before */
+}
+
+.small-service-title span {
+  color: #a685ff;
+  font-weight: 500;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1; /* keep text above the laser */
+}
+
+.small-service-title span::before {
+  content: '';
+  position: absolute;
+  bottom: 0; /* put the laser line just under the text */
+  left: 0;
+  height: 3px;
+  width: 0; /* start from 0 for animation */
+  background: linear-gradient(90deg, transparent, #a685ff, transparent);
+  border-radius: 4px;
+  animation: laser 1.5s ease-in-out infinite;
+}
+
+@keyframes laser {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
