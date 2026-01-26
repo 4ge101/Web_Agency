@@ -170,3 +170,29 @@
 .magic-bento-card__button svg {
   stroke: currentColor;
 }
+
+.magic-bento-card__icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+
+  box-shadow: 0 0 30px rgba(132, 0, 255, 0.15);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease;
+}
+
+.magic-bento-card__icon {
+  width: 34px;
+  height: 34px;
+  filter: brightness(1.2);
+}
+
+/* Hover sync with your existing rotation */
+.magic-bento-card:hover .magic-bento-card__icon-wrap {
+  transform: rotate(40deg) scale(1.1);
+  box-shadow: 0 0 45px currentColor;
+}

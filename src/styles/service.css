@@ -9,7 +9,7 @@
 
 .small-service-title {
   position: relative;
-  display: inline-block; /* important for positioning the ::before */
+  display: inline-block;
 }
 
 .small-service-title span {
@@ -17,16 +17,16 @@
   font-weight: 500;
   padding: 0 40px;
   position: relative;
-  z-index: 1; /* keep text above the laser */
+  z-index: 1;
 }
 
 .small-service-title span::before {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: 0; /* put the laser line just under the text */
+  bottom: 0;
   left: 0;
   height: 3px;
-  width: 0; /* start from 0 for animation */
+  width: 0;
   background: linear-gradient(90deg, transparent, #a685ff, transparent);
   border-radius: 4px;
   animation: laser 1.5s ease-in-out infinite;

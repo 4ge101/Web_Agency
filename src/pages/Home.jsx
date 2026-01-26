@@ -1,6 +1,7 @@
 import Hyperspeed from "../components/Hyperspeed";
 import "../styles/home.css";
 import Services from "./Services";
+import Projects from "./Project"
 import ArrowIcon from "../assets/icons/arrow.svg";
 
 const Home = () => {
@@ -75,6 +76,7 @@ const Home = () => {
         </div>
       </div>
       <Services/>
+      <Projects/>
     </div>
   );
 };

@@ -19,31 +19,43 @@ const cardData = [
     icon: WebIcon,
     title: "Web Development",
     smallText: "Next-gen web experiences",
+    iconBg: "rgba(132, 0, 255, 0.15)",
+    iconColor: "#a685ff",
   },
   {
     icon: MobileIcon,
     title: "Mobile Apps",
     smallText: "Native & cross-platform",
+    iconBg: "rgba(0, 200, 255, 0.15)",
+    iconColor: "#00c8ff",
   },
   {
     icon: UIUXIcon,
     title: "UI/UX Design",
     smallText: "Pixel-perfect interfaces",
+    iconBg: "rgba(255, 120, 120, 0.15)",
+    iconColor: "#ff7878",
   },
   {
     icon: PerfomanceIcon,
     title: "Performance",
     smallText: "Lightning-fast apps",
+    iconBg: "rgba(0, 255, 170, 0.15)",
+    iconColor: "#00ffaa",
   },
   {
     icon: StackIcon,
     title: "Brand Identity",
     smallText: "Visual storytelling",
+    iconBg: "rgba(255, 200, 0, 0.15)",
+    iconColor: "#ffc800",
   },
   {
     icon: SoftwreIcon,
     title: "Software Solutions",
     smallText: "Enterprise systems",
+    iconBg: "rgba(255, 0, 200, 0.15)",
+    iconColor: "#ff00c8",
   },
 ];
 
@@ -549,11 +561,19 @@ const MagicBento = ({
             >
               <div className="magic-bento-card__header">
                 {card.icon && (
-                  <img
-                    src={card.icon}
-                    alt={`${card.title} icon`}
-                    className="magic-bento-card__icon"
-                  />
+                  <div
+                    className="magic-bento-card__icon-wrap"
+                    style={{
+                      background: card.iconBg,
+                      color: card.iconColor,
+                    }}
+                  >
+                    <img
+                      src={card.icon}
+                      alt={`${card.title} icon`}
+                      className="magic-bento-card__icon"
+                    />
+                  </div>
                 )}
               </div>
 
@@ -564,7 +584,8 @@ const MagicBento = ({
                 </small>
                 <button className="magic-bento-card__button">
                   Explore
-                  <svg className="bento-btn"
+                  <svg
+                    className="bento-btn"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
