@@ -1,0 +1,108 @@
+.about-container {
+  padding: 80px 0;
+  margin: 80px 40px;
+}
+
+.about-title-container h1 {
+  font-size: 110px;
+  line-height: 1;
+  padding: 40px 0;
+}
+
+.small-about-title span {
+  color: #ed7abd;
+  font-weight: 500;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.small-about-title span::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #ed7abd, transparent);
+  border-radius: 4px;
+  animation: laser 1.5s ease-in-out infinite;
+}
+
+@keyframes laser {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+.about-paragraph {
+  width: 40%;
+  margin: 40px 0;
+  padding: 40px 0 0;
+}
+
+.about-paragraph p {
+  font-size: 22px;
+}
+
+.list-container {
+  padding: 40px 40px;
+  width: 42%;
+}
+
+.list span {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.list p {
+  font-size: 20px;
+  color: #9a9191;
+  padding: 15px 0;
+}
+
+.list span::before {
+  content: "";
+  position: absolute;
+  left: 1%;
+  margin: 14px 22px;
+  background: #535b8b;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+
+.box {
+  width: 25%;
+  height: 14em;
+  border-radius: 30px;
+}
+
+.box1 {
+  background-color: rgb(74 121 121 / 30%);
+  border: 2px solid rgb(105 113 105 / 60%);
+}
+
+.box2 {
+  background-color: rgb(99 146 204 / 30%);
+  border: 2px solid rgb(105 110 113 / 60%);
+}
+
+.box3 {
+  background-color: rgb(249 75 75 / 30%);
+  border: 2px solid rgb(107 38 38 / 60%);
+}
+
+.box4 {
+  background-color: rgb(126 54 160 / 30%);
+  border: 2px solid rgb(73 41 93 / 60%);
+}

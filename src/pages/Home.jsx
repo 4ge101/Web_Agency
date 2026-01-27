@@ -1,8 +1,9 @@
 import Hyperspeed from "../components/Hyperspeed";
+import ArrowIcon from "../assets/icons/arrow.svg";
 import "../styles/home.css";
 import Services from "./Services";
-import Projects from "./Project"
-import ArrowIcon from "../assets/icons/arrow.svg";
+import Projects from "./Project";
+import About from "./About";
 
 const Home = () => {
   return (
@@ -75,8 +76,9 @@ const Home = () => {
           <span class="stick"></span>
         </div>
       </div>
-      <Services/>
-      <Projects/>
+      <Services />
+      <Projects />
+      <About />
     </div>
   );
 };
