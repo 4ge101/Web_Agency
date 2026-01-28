@@ -3,6 +3,11 @@
   margin: 80px 40px;
 }
 
+.service-title {
+  padding: 10% 0 4%;
+  margin: 2% 0 0;
+}
+
 .service-title h1 {
   font-size: 110px;
 }
