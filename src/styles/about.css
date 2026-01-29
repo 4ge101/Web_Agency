@@ -264,3 +264,16 @@
   font-size: 30px;
   font-weight: 300;
 }
+
+.box-btn{
+  padding: 50px 0;
+}
+
+.box-btn button {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  font-size: 26px;
+  padding: 20px 35px;
+  border-radius: 50px;
+}
