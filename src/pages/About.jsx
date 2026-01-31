@@ -98,7 +98,24 @@ const About = () => {
             <span>Ready to transform your vision into reality?</span>
           </div>
           <div className="box-btn">
-            <button>Start Your Journey</button>
+            <button>
+              Start Your Journey
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="40"
+                height="40"
+                color="#ffffff"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18.5 12L4.99997 12" />
+                <path d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

@@ -1,33 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import './styles/Global.css'
-import BlobCursor from './components/BlobCursor';
+import "./styles/Global.css";
+import Navbar from "./components/Navbar";
+import BlobCursor from "./components/BlobCursor";
 
 import Home from "./pages/Home";
 // import Services from "./pages/Services";
 // import Work from "./pages/Work";
 // import About from "./pages/About";
-// import Contact from "./pages/Contact";
+import Contact from "./pages/Contact";
 // import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <>
-    {/* <BlobCursor/> */}
-    <Router>
-      <Routes>
-        <Route element={<Layout />}>
+      {/* <BlobCursor/> */}
+      <Router>
+        <Navbar />
+        <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/services" element={<Services />} /> */}
           {/* <Route path="/work" element={<Work />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
           {/* <Route path="/faq" element={<FAQ />} /> */}
           <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
     </>
   );
 }

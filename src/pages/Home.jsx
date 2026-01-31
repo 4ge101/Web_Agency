@@ -4,6 +4,7 @@ import "../styles/home.css";
 import Services from "./Services";
 import Projects from "./Project";
 import About from "./About";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -70,15 +71,16 @@ const Home = () => {
           <button>View Showcase</button>
         </div>
       </div>
-      <div class="explore-animation">
-        <div class="bounce-wrapper">
+      <div className="explore-animation">
+        <div className="bounce-wrapper">
           <p>Scroll to explore</p>
-          <span class="stick"></span>
+          <span className="stick"></span>
         </div>
       </div>
       <Services />
       <Projects />
       <About />
+      <Footer />
     </div>
   );
 };

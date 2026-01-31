@@ -1,0 +1,37 @@
+footer {
+  height: 25em;
+  border-top: 2px solid #292727;
+  padding: 70px 30px;
+}
+
+.footer-logo h1 {
+  font-size: 48px;
+}
+
+.footer-column {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-profile a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 0 30px;
+  transition: 0.3s;
+}
+
+.footer-profile a:hover {
+  color: #c95555;
+}
+
+.copy-right {
+  font-size: 20px;
+  color: #5d5b56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  margin: 60px 0;
+}

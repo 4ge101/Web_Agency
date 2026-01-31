@@ -228,7 +228,7 @@
 .big-box {
   width: 70vw;
   height: 70vh;
-  border-radius: 20px;
+  border-radius: 60px;
   background: linear-gradient(135deg, #a46ce0, #0f2242);
   position: relative;
   overflow: hidden;
@@ -265,7 +265,7 @@
   font-weight: 300;
 }
 
-.box-btn{
+.box-btn {
   padding: 50px 0;
 }
 
@@ -273,7 +273,27 @@
   background: black;
   color: white;
   border: 1px solid black;
-  font-size: 26px;
-  padding: 20px 35px;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 25px 45px;
   border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.box-btn button:hover {
+  transform: scale(1.08);
+}
+
+.box-btn button svg {
+  transform: rotate(-45deg) translateX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.box-btn button:hover svg {
+  transform: rotate(0deg) translateX(4px);
 }
