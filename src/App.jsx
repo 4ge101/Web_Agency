@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./styles/Global.css";
 import Navbar from "./components/Navbar";
 import BlobCursor from "./components/BlobCursor";
@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 // import About from "./pages/About";
 import Contact from "./pages/Contact";
 // import FAQ from "./pages/FAQ";
-import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
           {/* <Route path="/about" element={<About />} /> */}
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="/faq" element={<FAQ />} /> */}
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
