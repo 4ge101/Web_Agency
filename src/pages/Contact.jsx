@@ -3,7 +3,6 @@ import "../styles/contact.css";
 
 const Contact = () => {
   const navigate = useNavigate();
-
   return (
     <>
       <div className="contact-logo-container">
@@ -30,27 +29,112 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="contact-form-container">
-        <div className="contact-form">
+      <section className="contact-section">
+        {/* LEFT INFO */}
+        <div className="contact-info">
+          <h2>Contact Information</h2>
+
+          <div className="info-item">
+            <span className="icon purple">✉</span>
+            <div>
+              <h4>Email</h4>
+              <p>hello@startagency.com</p>
+              <small>We'll respond within 24 hours</small>
+            </div>
+          </div>
+
+          <div className="info-item">
+            <span className="icon cyan">📞</span>
+            <div>
+              <h4>Phone</h4>
+              <p>+1 (234) 567-890</p>
+              <small>Mon–Fri, 9am–6pm EST</small>
+            </div>
+          </div>
+
+          <div className="info-item">
+            <span className="icon pink">📍</span>
+            <div>
+              <h4>Office</h4>
+              <p>123 Digital Avenue</p>
+              <small>San Francisco, CA 94105</small>
+            </div>
+          </div>
+
+          <div className="follow">
+            <h4>Follow Us</h4>
+            <div className="socials">
+              <span>Twitter</span>
+              <span>LinkedIn</span>
+              <span>Instagram</span>
+              <span>Dribbble</span>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT FORM */}
+        <div className="contact-form-box">
           <form>
-            <div className="email-text">
-              <label htmlFor="text">Full Name*</label>
-              <input type="text" name="text" placeholder="John Doe" />
-
-              <label htmlFor="mail">Email Address*</label>
-              <input type="email" name="mail" placeholder="john@examples.com" />
-            </div>
-            <div className="number-company">
-              <label htmlFor="number">Phone Number</label>
-              <input type="number" name="number" placeholder="+1 (1234) 567-890" />
-
-              <label htmlFor="company-name">Company Name</label>
-              <input type="text" name="company-name" placeholder="Your Company" />
+            <div className="form-row">
+              <div className="field">
+                <label>Full Name *</label>
+                <input placeholder="John Doe" />
+              </div>
+              <div className="field">
+                <label>Email Address *</label>
+                <input placeholder="john@example.com" />
+              </div>
             </div>
 
+            <div className="form-row">
+              <div className="field">
+                <label>Phone Number</label>
+                <input placeholder="+1 (234) 567-890" />
+              </div>
+              <div className="field">
+                <label>Company Name</label>
+                <input placeholder="Your Company" />
+              </div>
+            </div>
+
+            <div className="field field2">
+              <label>Service Interested In *</label>
+              <select>
+                <option>Web Development</option>
+                <option>UI/UX Design</option>
+                <option>Brand Identity</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div className="field field2">
+              <label>Message *</label>
+              <textarea placeholder="Tell us about your project..." />
+            </div>
+
+            <button className="send-btn">
+              Send Message{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="30"
+                height="30"
+                color="#ffffff"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18.5 12L4.99997 12" />
+                <path d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6" />
+              </svg>
+            </button>
+
+            <p className="note">We'll get back to you within 24 hours</p>
           </form>
         </div>
-      </div>
+      </section>
     </>
   );
 };
