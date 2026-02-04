@@ -5,10 +5,12 @@ import Services from "./Services";
 import Projects from "./Project";
 import About from "./About";
 import Footer from "../components/Footer";
+import Alert from "./alert";
 
 const Home = () => {
   return (
     <div>
+      <Alert/>
       <Hyperspeed
         effectOptions={{
           distortion: "xyDistortion",

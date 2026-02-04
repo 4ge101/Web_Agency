@@ -104,19 +104,19 @@
   display: flex;
   gap: 60px;
   padding: 80px;
+  margin: 0 0 80px;
   background: #000;
   color: #fff;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
 }
 
-/* LEFT */
 .contact-info {
   width: 35%;
 }
 
-.contact-info h2 {
-  font-size: 32px;
+.contact-info h1 {
+  font-size: 46px;
   margin-bottom: 40px;
 }
 
@@ -135,38 +135,38 @@
   font-size: 18px;
 }
 
-.icon.purple {
-  background: #7c3aed;
-}
-.icon.cyan {
-  background: #06b6d4;
-}
-.icon.pink {
-  background: #ec4899;
-}
-
 .info-item h4 {
   margin: 0;
-  font-size: 16px;
+  font-size: 22px;
+  padding: 10px 0;
 }
 
 .info-item p {
   margin: 4px 0;
-  color: #e5e7eb;
+  color: #929395;
+  font-size: 24px;
 }
 
 .info-item small {
   color: #9ca3af;
+  font-size: 24px;
 }
 
 .follow {
   margin-top: 60px;
+  border-top: 2px solid #292727;
+  padding:30px 0;
+}
+
+.follow h2{
+  padding: 26px 0;
 }
 
 .socials span {
-  margin-right: 16px;
+  margin-right: 24px;
   color: #9ca3af;
   cursor: pointer;
+  font-size: 22px;
 }
 
 .contact-form-box {
@@ -230,7 +230,6 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
 }
 
-/* BUTTON */
 .send-btn {
   display: flex;
   align-items: center;
