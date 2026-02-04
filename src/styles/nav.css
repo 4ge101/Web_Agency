@@ -48,3 +48,34 @@ nav a {
 .contact-btn button:hover{
   transform: scale(1.08);
 }
+
+/* ===== Responsive Navbar ===== */
+
+.mobile-nav {
+  display: none;
+}
+
+/* Tablet & below */
+@media (max-width: 900px) {
+  .navigation,
+  .contact-btn{
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Mobile fine-tune */
+@media (max-width: 480px) {
+  nav {
+    padding: 16px 18px;
+  }
+
+  .logo p {
+    font-size: 24px;
+  }
+}

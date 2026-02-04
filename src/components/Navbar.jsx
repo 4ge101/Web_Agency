@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import "../styles/nav.css";
+import BubbleMenu from "../components/BubbleMenu";
 
 const Navbar = () => {
   const location = useLocation();
@@ -24,6 +25,10 @@ const Navbar = () => {
 
       <div className="contact-btn">
         <button>Let's Talk</button>
+      </div>
+
+      <div className="mobile-nav">
+        <BubbleMenu />
       </div>
     </nav>
   );

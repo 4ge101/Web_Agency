@@ -152,7 +152,6 @@
   border-radius: 50%;
 }
 
-
 .project-card-container {
   width: 33%;
   padding: 10px;
@@ -232,7 +231,9 @@
   border: 2px solid #555353;
   border-radius: 50%;
   z-index: 2;
-  transition: box-shadow 0.5s ease, transform 0.5s ease;
+  transition:
+    box-shadow 0.5s ease,
+    transform 0.5s ease;
 }
 
 /* glow on card hover */
@@ -288,7 +289,9 @@
 
 .small-project-btn-icon {
   transform: rotate(-45deg);
-  transition: transform 0.4s ease, stroke 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    stroke 0.4s ease;
 }
 
 /* arrow animation */
@@ -299,4 +302,33 @@
 .card-container:hover .small-project-btn-icon {
   transform: rotate(0deg);
   stroke: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .project-container {
+    margin: 80px 20px;
+  }
+
+  .project-title {
+    flex-direction: column;
+  }
+
+  .project-title h1 {
+    font-size: 46px;
+    padding: 30px 0;
+  }
+
+  .project-btn button {
+    padding: 20px 100px;
+  }
+
+  .project-card-container {
+    width: 100%;
+    padding: 40px 0 0;
+  }
+
+  .circle-icon-container {
+    top: 8%;
+    right: 5%;
+  }
 }

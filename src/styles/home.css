@@ -113,7 +113,11 @@
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .showcase-btn button:hover {
@@ -150,6 +154,49 @@
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 900px) {
+  .title-container {
+    margin: 60px 0px 0;
+    padding: 60px 0;
+  }
+
+  .title-container h1 {
+    font-size: 55px;
+    text-align: center;
+    line-height: 1.1;
+    width: auto;
+  }
+
+  .title-container p {
+    font-size: 19px;
+    width: 100%;
+    color: #9c9999;
+  }
+
+  .small-title span {
+    font-size: 18px;
+    padding: 12px 17px;
+  }
+
+  #lights {
+    width: 120%;
+    height: 150%;
+  }
+
+  .btn-container {
+    display: grid;
+  }
+
+  .showcase-btn {
+    text-align: center;
+  }
 }

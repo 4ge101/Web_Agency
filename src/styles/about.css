@@ -297,3 +297,11 @@
 .box-btn button:hover svg {
   transform: rotate(0deg) translateX(4px);
 }
+
+@media (max-width: 900px) {
+  .about-title-container h1 {
+    font-size: 46px;
+    line-height: 1.4;
+    width: 100%;
+  }
+}

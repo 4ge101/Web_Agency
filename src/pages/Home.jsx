@@ -10,7 +10,7 @@ import Alert from "./alert";
 const Home = () => {
   return (
     <div>
-      <Alert/>
+      {/* <Alert/> */}
       <Hyperspeed
         effectOptions={{
           distortion: "xyDistortion",
