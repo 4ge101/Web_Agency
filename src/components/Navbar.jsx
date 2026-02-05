@@ -5,9 +5,18 @@ import BubbleMenu from "../components/BubbleMenu";
 const Navbar = () => {
   const location = useLocation();
 
+  // hide navbar on contact page
   if (location.pathname === "/contact") {
     return null;
   }
+
+  const navItems = [
+    { label: "Home", to: "/" },
+    { label: "Services", to: "/services" },
+    { label: "Work", to: "/work" },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
+  ];
 
   return (
     <nav>
@@ -15,12 +24,13 @@ const Navbar = () => {
         <p>AKESHA</p>
       </div>
 
+      {/* Desktop nav */}
       <div className="navigation">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/services">Services</NavLink>
-        <NavLink to="/work">Work</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        {navItems.map((item, i) => (
+          <NavLink key={i} to={item.to}>
+            {item.label}
+          </NavLink>
+        ))}
       </div>
 
       <div className="contact-btn">
@@ -28,7 +38,7 @@ const Navbar = () => {
       </div>
 
       <div className="mobile-nav">
-        <BubbleMenu />
+        <BubbleMenu items={navItems} />
       </div>
     </nav>
   );

@@ -136,6 +136,7 @@
 
 .bubble-menu-items.absolute {
   position: absolute;
+  z-index: 999;
 }
 
 .bubble-menu-items .pill-list {

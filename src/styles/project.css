@@ -313,6 +313,14 @@
     flex-direction: column;
   }
 
+  .footer-profile a {
+    font-size: 16px;
+  }
+
+  .copy-right {
+    font-size: 16px;
+  }
+  
   .project-title h1 {
     font-size: 46px;
     padding: 30px 0;

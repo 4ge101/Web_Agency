@@ -1,49 +1,17 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
-
 import "./BubbleMenu.css";
 
 const DEFAULT_ITEMS = [
-  {
-    label: "home",
-    href: "#",
-    ariaLabel: "Home",
-    rotation: -8,
-    hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
-  },
-  {
-    label: "about",
-    href: "#",
-    ariaLabel: "About",
-    rotation: 8,
-    hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
-  },
-  {
-    label: "projects",
-    href: "#",
-    ariaLabel: "Documentation",
-    rotation: 8,
-    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
-  },
-  {
-    label: "blog",
-    href: "#",
-    ariaLabel: "Blog",
-    rotation: 8,
-    hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
-  },
-  {
-    label: "contact",
-    href: "#",
-    ariaLabel: "Contact",
-    rotation: -8,
-    hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
-  },
+  { label: "home", to: "/", rotation: -8 },
+  { label: "about", to: "/about", rotation: 8 },
+  { label: "projects", to: "/work", rotation: 8 },
+  { label: "blog", to: "/blog", rotation: 8 },
+  { label: "contact", to: "/contact", rotation: -8 },
 ];
 
 export default function BubbleMenu({
-  logo,
-  onMenuClick,
   className,
   style,
   menuAriaLabel = "Toggle menu",
@@ -62,7 +30,11 @@ export default function BubbleMenu({
   const bubblesRef = useRef([]);
   const labelRefs = useRef([]);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
+
   const containerClassName = [
     "bubble-menu",
     useFixedPosition ? "fixed" : "absolute",
@@ -72,11 +44,20 @@ export default function BubbleMenu({
     .join(" ");
 
   const handleToggle = () => {
-    const nextState = !isMenuOpen;
-    if (nextState) setShowOverlay(true);
-    setIsMenuOpen(nextState);
-    onMenuClick?.(nextState);
+    const next = !isMenuOpen;
+    if (next) setShowOverlay(true);
+    setIsMenuOpen(next);
   };
+
+  const handleNavigate = (to) => {
+    navigate(to);
+    setIsMenuOpen(false);
+  };
+
+  // 🔥 close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const overlay = overlayRef.current;
@@ -88,11 +69,11 @@ export default function BubbleMenu({
     if (isMenuOpen) {
       gsap.set(overlay, { display: "flex" });
       gsap.killTweensOf([...bubbles, ...labels]);
-      gsap.set(bubbles, { scale: 0, transformOrigin: "50% 50%" });
+      gsap.set(bubbles, { scale: 0 });
       gsap.set(labels, { y: 24, autoAlpha: 0 });
 
       bubbles.forEach((bubble, i) => {
-        const delay = i * staggerDelay + gsap.utils.random(-0.05, 0.05);
+        const delay = i * staggerDelay;
         const tl = gsap.timeline({ delay });
 
         tl.to(bubble, {
@@ -100,6 +81,7 @@ export default function BubbleMenu({
           duration: animationDuration,
           ease: animationEase,
         });
+
         if (labels[i]) {
           tl.to(
             labels[i],
@@ -109,53 +91,37 @@ export default function BubbleMenu({
               duration: animationDuration,
               ease: "power3.out",
             },
-            `-=${animationDuration * 0.9}`,
+            `-=${animationDuration * 0.9}`
           );
         }
       });
     } else if (showOverlay) {
-      gsap.killTweensOf([...bubbles, ...labels]);
       gsap.to(labels, {
         y: 24,
         autoAlpha: 0,
         duration: 0.2,
-        ease: "power3.in",
       });
+
       gsap.to(bubbles, {
         scale: 0,
         duration: 0.2,
-        ease: "power3.in",
         onComplete: () => {
           gsap.set(overlay, { display: "none" });
           setShowOverlay(false);
         },
       });
     }
-  }, [isMenuOpen, showOverlay, animationEase, animationDuration, staggerDelay]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (isMenuOpen) {
-        const bubbles = bubblesRef.current.filter(Boolean);
-        const isDesktop = window.innerWidth >= 900;
-
-        bubbles.forEach((bubble, i) => {
-          const item = menuItems[i];
-          if (bubble && item) {
-            const rotation = isDesktop ? (item.rotation ?? 0) : 0;
-            gsap.set(bubble, { rotation });
-          }
-        });
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [isMenuOpen, menuItems]);
+  }, [
+    isMenuOpen,
+    showOverlay,
+    animationEase,
+    animationDuration,
+    staggerDelay,
+  ]);
 
   return (
     <>
-      {/* Toggle Button ONLY */}
+      {/* Toggle Button */}
       <div
         className={containerClassName}
         style={style}
@@ -163,7 +129,9 @@ export default function BubbleMenu({
       >
         <button
           type="button"
-          className={`bubble toggle-bubble menu-btn ${isMenuOpen ? "open" : ""}`}
+          className={`bubble toggle-bubble menu-btn ${
+            isMenuOpen ? "open" : ""
+          }`}
           onClick={handleToggle}
           aria-label={menuAriaLabel}
           aria-pressed={isMenuOpen}
@@ -180,44 +148,35 @@ export default function BubbleMenu({
         </button>
       </div>
 
-      {/* Bubble Nav Items */}
+      {/* Bubble Items */}
       {showOverlay && (
         <div
           ref={overlayRef}
           className={`bubble-menu-items ${
             useFixedPosition ? "fixed" : "absolute"
           }`}
-          aria-hidden={!isMenuOpen}
         >
-          <ul className="pill-list" role="menu" aria-label="Menu links">
+          <ul className="pill-list" role="menu">
             {menuItems.map((item, idx) => (
-              <li key={idx} role="none" className="pill-col">
-                <a
+              <li key={idx} className="pill-col">
+                <button
                   role="menuitem"
-                  href={item.href}
-                  aria-label={item.ariaLabel || item.label}
                   className="pill-link"
+                  onClick={() => handleNavigate(item.to)}
                   style={{
                     "--item-rot": `${item.rotation ?? 0}deg`,
                     "--pill-bg": menuBg,
                     "--pill-color": menuContentColor,
-                    "--hover-bg": item.hoverStyles?.bgColor || "#f3f4f6",
-                    "--hover-color":
-                      item.hoverStyles?.textColor || menuContentColor,
                   }}
-                  ref={(el) => {
-                    if (el) bubblesRef.current[idx] = el;
-                  }}
+                  ref={(el) => (bubblesRef.current[idx] = el)}
                 >
                   <span
                     className="pill-label"
-                    ref={(el) => {
-                      if (el) labelRefs.current[idx] = el;
-                    }}
+                    ref={(el) => (labelRefs.current[idx] = el)}
                   >
                     {item.label}
                   </span>
-                </a>
+                </button>
               </li>
             ))}
           </ul>
