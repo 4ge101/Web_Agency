@@ -37,18 +37,28 @@ footer {
 }
 
 @media (max-width: 900px) {
+  footer {
+    height: auto;
+  }
+  
   .footer-column {
     display: grid;
   }
 
   .footer-profile {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 32px 0;
   }
 
-  .footer-profile a{
+  .footer-profile a {
     padding: 0;
+  }
+
+  .copy-right {
+    padding: 0;
+    margin: 0;
+    text-align: center;
   }
 }
