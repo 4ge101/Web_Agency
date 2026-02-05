@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       {/* <Alert/> */}
-      <Hyperspeed
+      {/* <Hyperspeed
         effectOptions={{
           distortion: "xyDistortion",
           length: 400,
@@ -47,7 +47,7 @@ const Home = () => {
             sticks: 15855310,
           },
         }}
-      />
+      /> */}
       <div className="title-container">
         <div className="small-title">
           <span>✨Available for new projects</span>
