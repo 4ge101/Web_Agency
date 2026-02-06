@@ -6,7 +6,7 @@ import BlobCursor from "./components/BlobCursor";
 import Home from "./pages/Home";
 // import Services from "./pages/Services";
 // import Work from "./pages/Work";
-// import About from "./pages/About";
+import AboutTeam from "./pages/AboutTeam";
 import Contact from "./pages/Contact";
 // import FAQ from "./pages/FAQ";
 
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* <Route path="/services" element={<Services />} /> */}
           {/* <Route path="/work" element={<Work />} /> */}
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/aboutteam" element={<AboutTeam />} />
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="/faq" element={<FAQ />} /> */}
         </Routes>

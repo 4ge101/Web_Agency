@@ -1,0 +1,27 @@
+.about-team-title h1 {
+  font-size: 110px;
+  padding: 80px 50px;
+}
+
+.about-team-title span {
+  background: linear-gradient(
+    90deg,
+    hsla(187, 83%, 65%, 1) 0%,
+    hsla(301, 84%, 81%, 1) 50%,
+    hsla(347, 75%, 61%, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.about-team-title span:hover {
+  transform: scale(1.1);
+}
+
+.about-team-card {
+  width: 35%;
+  height: 35em;
+  background: red;
+}
