@@ -4,25 +4,19 @@ import Navbar from "./components/Navbar";
 import BlobCursor from "./components/BlobCursor";
 
 import Home from "./pages/Home";
-// import Services from "./pages/Services";
-// import Work from "./pages/Work";
 import AboutTeam from "./pages/AboutTeam";
 import Contact from "./pages/Contact";
-// import FAQ from "./pages/FAQ";
 
 function App() {
   return (
     <>
-      {/* <BlobCursor/> */}
+      <BlobCursor/>
       <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/services" element={<Services />} /> */}
-          {/* <Route path="/work" element={<Work />} /> */}
           <Route path="/aboutteam" element={<AboutTeam />} />
           <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/faq" element={<FAQ />} /> */}
         </Routes>
       </Router>
     </>
