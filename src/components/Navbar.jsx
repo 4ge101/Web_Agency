@@ -24,7 +24,6 @@ const Navbar = () => {
         <p>AKESHA</p>
       </div>
 
-      {/* Desktop nav */}
       <div className="navigation">
         {navItems.map((item, i) => (
           <NavLink key={i} to={item.to}>

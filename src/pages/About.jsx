@@ -14,7 +14,7 @@ const About = () => {
         <div className="about-left">
           <div className="about-paragraph">
             <p>
-              Since 2026, CodeDNA has been driving innovation in the digital
+              Since 2026, Akesha has been driving innovation in the digital
               space, collaborating with startups and businesses to craft
               exceptional online experiences. Our talented team of designers,
               developers, and strategists blend creativity with technology to

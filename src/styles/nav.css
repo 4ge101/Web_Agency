@@ -16,22 +16,30 @@ nav {
 }
 
 .navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 38px;
-    padding: 26px 34px;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+  padding: 26px 34px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
 }
 
 nav a {
   text-decoration: none;
   color: white;
   font-size: 18px;
+  transition:
+    transform 0.3s,
+    color 0.3s;
+}
+
+nav a:hover {
+  color: #ff6b81;
+  transform: translateY(-3px);
 }
 
 .contact-btn button {
@@ -45,7 +53,7 @@ nav a {
   display: inline-block;
 }
 
-.contact-btn button:hover{
+.contact-btn button:hover {
   transform: scale(1.08);
 }
 
@@ -58,7 +66,7 @@ nav a {
 /* Tablet & below */
 @media (max-width: 900px) {
   .navigation,
-  .contact-btn{
+  .contact-btn {
     display: none;
   }
 
