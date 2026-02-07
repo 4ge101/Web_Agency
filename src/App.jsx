@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./styles/Global.css";
 import Navbar from "./components/Navbar";
-import BlobCursor from "./components/BlobCursor";
-
 import Home from "./pages/Home";
 import AboutTeam from "./pages/AboutTeam";
 import Contact from "./pages/Contact";
@@ -10,7 +8,6 @@ import Contact from "./pages/Contact";
 function App() {
   return (
     <>
-      <BlobCursor/>
       <Router>
         <Navbar />
         <Routes>
