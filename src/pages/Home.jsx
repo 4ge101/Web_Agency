@@ -6,8 +6,17 @@ import Projects from "./Project";
 import About from "./About";
 import Footer from "../components/Footer";
 import Alert from "./alert";
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 const Home = () => {
+	const navigate = useNavigate();
+
+	const projectRef = useRef(null);
+	const scrollToProjects = () =>{
+		projectRef.current.scrollIntoView({ behavior: 'smooth' });
+	};
+	
   return (
     <div>
       {/* <Alert/> */}
@@ -65,12 +74,12 @@ const Home = () => {
       </div>
       <div className="btn-container">
         <div className="your-project-btn">
-          <button>
+          <button onClick={()=> navigate('/contact')}>
             Start Your Projects <img src={ArrowIcon} alt="arrow-icon" />
           </button>
         </div>
         <div className="showcase-btn">
-          <button>View Showcase</button>
+          <button onClick={scrollToProjects}>View Showcase</button>
         </div>
       </div>
       <div className="explore-animation">
@@ -80,7 +89,7 @@ const Home = () => {
         </div>
       </div>
       <Services />
-      <Projects />
+      <Projects ref={projectRef}/>
       <About />
       <Footer />
     </div>

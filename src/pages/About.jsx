@@ -1,6 +1,9 @@
 import "../styles/about.css";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="about-container">
       <div className="about-title-container">
@@ -9,7 +12,6 @@ const About = () => {
         </div>
         <h1>We are a team of digital innovators</h1>
       </div>
-
       <div className="about-content">
         <div className="about-left">
           <div className="about-paragraph">
@@ -19,10 +21,9 @@ const About = () => {
               exceptional online experiences. Our talented team of designers,
               developers, and strategists blend creativity with technology to
               deliver solutions that exceed expectations today and pave the way
-              for tomorrow’s opportunities.
+              for tomorrow's opportunities.
             </p>
           </div>
-
           <div className="list-container">
             <div className="list">
               <span>Innovative Approach</span>
@@ -31,7 +32,6 @@ const About = () => {
                 cutting-edge solutions.
               </p>
             </div>
-
             <div className="list">
               <span>Client-Centric</span>
               <p>
@@ -39,7 +39,6 @@ const About = () => {
                 your vision and goals.
               </p>
             </div>
-
             <div className="list">
               <span>Excellence</span>
               <p>
@@ -49,7 +48,6 @@ const About = () => {
             </div>
           </div>
         </div>
-
         <div className="about-box-container">
           <div className="about-box">
             <div className="box box1">
@@ -71,7 +69,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
       <div className="number-container">
         <div className="number">
           <h1>0</h1>
@@ -90,7 +87,6 @@ const About = () => {
           <span>Years Experience</span>
         </div>
       </div>
-
       <div className="big-box-container">
         <div className="big-box">
           <div className="big-box-title">
@@ -98,7 +94,7 @@ const About = () => {
             <span>Ready to transform your vision into reality?</span>
           </div>
           <div className="box-btn">
-            <button>
+            <button onClick={() => navigate('/contact')}>
               Start Your Journey
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,9 +104,9 @@ const About = () => {
                 color="#ffffff"
                 fill="none"
                 stroke="#ffffff"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M18.5 12L4.99997 12" />
                 <path d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6" />
