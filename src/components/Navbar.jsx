@@ -1,6 +1,7 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import "../styles/nav.css";
 import BubbleMenu from "../components/BubbleMenu";
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
-        <p>AKESHA</p>
+        <img src={Logo} alt="logo" />
       </div>
 
       <div className="navigation">
@@ -31,7 +32,9 @@ const Navbar = () => {
       </div>
 
       <div className="contact-btn">
-        <button>Let's Talk</button>
+        <Link to="/contact">
+          <button>Let's Talk</button>
+        </Link>
       </div>
 
       <div className="mobile-nav">

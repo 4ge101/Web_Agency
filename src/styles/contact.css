@@ -7,15 +7,10 @@
   padding: 44px 40px 80px;
 }
 
-.contact-logo h1 {
-  background: linear-gradient(
-    90deg,
-    hsl(127.1deg 38.39% 46.73%) 0%,
-    hsl(158.17deg 47.5% 55.58%) 50%,
-    hsl(130.6deg 68.68% 48.5%) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.contact-logo img {
+  width: 14%;
+  position: absolute;
+  top: -2%;
 }
 
 .contact-title-container {

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import "../styles/contact.css";
 import Footer from "../components/Footer";
+import Logo from '../assets/logo.png';
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Contact = () => {
     <>
       <div className="contact-logo-container">
         <div className="contact-logo">
-          <h1>AKESHA</h1>
+          <img src={Logo} alt="logo" />
         </div>
         <button className="back-home-btn" onClick={() => navigate("/")}>
           Back To Home

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/footer.css";
+import Logo from '../assets/logo.png'
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <footer>
           <div className="footer-column">
             <div className="footer-logo">
-              <h1>AKESHA</h1>
+              <img src={Logo} alt="footer logo" />
             </div>
             <div className="footer-profile">
               <a href="https://x.com/sami72982704">Twitter</a>
@@ -19,7 +20,7 @@ const Footer = () => {
           </div>
           <div className="copy-right">
             <p>
-              © 2026 Akesha Agency. Crafting digital experiences that inspire. Made by <a href="https://AlixSami.com/">Mohammad Sami Ali</a>
+              © 2026 Eshal Agency. Crafting digital experiences that inspire. Made by <a href="https://AlixSami.com/">Mohammad Sami Ali</a>
             </p>
           </div>
         </footer>

@@ -4,8 +4,8 @@ footer {
   padding: 70px 30px;
 }
 
-.footer-logo h1 {
-  font-size: 48px;
+.footer-logo img {
+  width: 20%;
 }
 
 .footer-column {
@@ -32,7 +32,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 0;
   margin: 60px 0;
 }
 
