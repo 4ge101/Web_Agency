@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
           <div className="copy-right">
             <p>
-              © 2026 Akesha Agency. Crafting digital experiences that inspire.
+              © 2026 Akesha Agency. Crafting digital experiences that inspire. Made by <a href="https://AlixSami.com/">Mohammad Sami Ali</a>
             </p>
           </div>
         </footer>

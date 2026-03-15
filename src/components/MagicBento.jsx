@@ -7,7 +7,6 @@ import SoftwreIcon from "../assets/icons/softwareIcon.svg";
 import StackIcon from "../assets/icons/stackIcon.svg";
 import UIUXIcon from "../assets/icons/uiuxIcon.svg";
 import WebIcon from "../assets/icons/websiteIcon.svg";
-import ArrowIcon from "../assets/icons/arrow.svg";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -19,47 +18,70 @@ const cardData = [
     icon: WebIcon,
     title: "Web Development",
     smallText: "Next-gen web experiences",
-    iconBg: "rgba(132, 0, 255, 0.15)",
-    iconColor: "#a685ff",
+    iconBg: "rgba(0, 120, 255, 1)",
+    iconColor: "#ffffff",
+    exploreColor: "#00aaff",
+    cardTintColor: "rgba(0, 120, 255, 0.22)",
+    cardBorderGlow: "rgba(0, 140, 255, 0.45)",
+    cardShadowGlow: "rgba(0, 120, 255, 0.15)",
   },
   {
     icon: MobileIcon,
     title: "Mobile Apps",
     smallText: "Native & cross-platform",
-    iconBg: "rgba(0, 200, 255, 0.15)",
-    iconColor: "#00c8ff",
+    iconBg: "linear-gradient(135deg, #e040fb, #ff4081)",
+    iconColor: "#ffffff",
+    exploreColor: "#e040fb",
+    cardTintColor: "rgba(180, 0, 160, 0.25)",
+    cardBorderGlow: "rgba(200, 30, 180, 0.50)",
+    cardShadowGlow: "rgba(180, 0, 160, 0.15)",
   },
   {
     icon: UIUXIcon,
     title: "UI/UX Design",
     smallText: "Pixel-perfect interfaces",
-    iconBg: "rgba(255, 120, 120, 0.15)",
-    iconColor: "#ff7878",
+    iconBg: "linear-gradient(135deg, #ff6d00, #ff9100)",
+    iconColor: "#ffffff",
+    exploreColor: "#ff6d00",
+    cardTintColor: "rgba(255, 100, 0, 0.20)",
+    cardBorderGlow: "rgba(255, 110, 0, 0.45)",
+    cardShadowGlow: "rgba(255, 100, 0, 0.13)",
   },
   {
     icon: PerfomanceIcon,
     title: "Performance",
     smallText: "Lightning-fast apps",
-    iconBg: "rgba(0, 255, 170, 0.15)",
-    iconColor: "#00ffaa",
+    iconBg: "linear-gradient(135deg, #ff6d00, #ff9100)",
+    iconColor: "#ffffff",
+    exploreColor: "#ff9100",
+    cardTintColor: "rgba(255, 140, 0, 0.20)",
+    cardBorderGlow: "rgba(255, 150, 0, 0.45)",
+    cardShadowGlow: "rgba(255, 140, 0, 0.13)",
   },
   {
     icon: StackIcon,
     title: "Brand Identity",
     smallText: "Visual storytelling",
-    iconBg: "rgba(255, 200, 0, 0.15)",
-    iconColor: "#ffc800",
+    iconBg: "linear-gradient(135deg, #7c4dff, #9c6fff)",
+    iconColor: "#ffffff",
+    exploreColor: "#7c4dff",
+    cardTintColor: "rgba(100, 50, 255, 0.20)",
+    cardBorderGlow: "rgba(120, 70, 255, 0.45)",
+    cardShadowGlow: "rgba(100, 50, 255, 0.13)",
   },
   {
     icon: SoftwreIcon,
     title: "Software Solutions",
     smallText: "Enterprise systems",
-    iconBg: "rgba(255, 0, 200, 0.15)",
-    iconColor: "#ff00c8",
+    iconBg: "rgba(0, 200, 83, 1)",
+    iconColor: "#ffffff",
+    exploreColor: "#00c853",
+    cardTintColor: "rgba(0, 200, 83, 0.18)",
+    cardBorderGlow: "rgba(0, 200, 83, 0.45)",
+    cardShadowGlow: "rgba(0, 200, 83, 0.12)",
   },
 ];
 
-// PARTICLE CREATION
 const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
   const el = document.createElement("div");
   el.className = "particle";
@@ -87,14 +109,12 @@ const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
   const rect = card.getBoundingClientRect();
   const relativeX = ((mouseX - rect.left) / rect.width) * 100;
   const relativeY = ((mouseY - rect.top) / rect.height) * 100;
-
   card.style.setProperty("--glow-x", `${relativeX}%`);
   card.style.setProperty("--glow-y", `${relativeY}%`);
   card.style.setProperty("--glow-intensity", glow.toString());
   card.style.setProperty("--glow-radius", `${radius}px`);
 };
 
-// PARTICLE CARD COMPONENT
 const ParticleCard = ({
   children,
   className = "",
@@ -116,14 +136,9 @@ const ParticleCard = ({
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return;
-
     const { width, height } = cardRef.current.getBoundingClientRect();
     memoizedParticles.current = Array.from({ length: particleCount }, () =>
-      createParticleElement(
-        Math.random() * width,
-        Math.random() * height,
-        glowColor,
-      ),
+      createParticleElement(Math.random() * width, Math.random() * height, glowColor)
     );
     particlesInitialized.current = true;
   }, [particleCount, glowColor]);
@@ -132,16 +147,13 @@ const ParticleCard = ({
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
     magnetismAnimationRef.current?.kill();
-
     particlesRef.current.forEach((particle) => {
       gsap.to(particle, {
         scale: 0,
         opacity: 0,
         duration: 0.3,
         ease: "back.in(1.7)",
-        onComplete: () => {
-          particle.parentNode?.removeChild(particle);
-        },
+        onComplete: () => particle.parentNode?.removeChild(particle),
       });
     });
     particlesRef.current = [];
@@ -149,166 +161,63 @@ const ParticleCard = ({
 
   const animateParticles = useCallback(() => {
     if (!cardRef.current || !isHoveredRef.current) return;
-
-    if (!particlesInitialized.current) {
-      initializeParticles();
-    }
-
+    if (!particlesInitialized.current) initializeParticles();
     memoizedParticles.current.forEach((particle, index) => {
       const timeoutId = setTimeout(() => {
         if (!isHoveredRef.current || !cardRef.current) return;
-
         const clone = particle.cloneNode(true);
         cardRef.current.appendChild(clone);
         particlesRef.current.push(clone);
-
-        gsap.fromTo(
-          clone,
-          { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" },
-        );
-
-        gsap.to(clone, {
-          x: (Math.random() - 0.5) * 100,
-          y: (Math.random() - 0.5) * 100,
-          rotation: Math.random() * 360,
-          duration: 2 + Math.random() * 2,
-          ease: "none",
-          repeat: -1,
-          yoyo: true,
-        });
-
-        gsap.to(clone, {
-          opacity: 0.3,
-          duration: 1.5,
-          ease: "power2.inOut",
-          repeat: -1,
-          yoyo: true,
-        });
+        gsap.fromTo(clone, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" });
+        gsap.to(clone, { x: (Math.random() - 0.5) * 100, y: (Math.random() - 0.5) * 100, rotation: Math.random() * 360, duration: 2 + Math.random() * 2, ease: "none", repeat: -1, yoyo: true });
+        gsap.to(clone, { opacity: 0.3, duration: 1.5, ease: "power2.inOut", repeat: -1, yoyo: true });
       }, index * 100);
-
       timeoutsRef.current.push(timeoutId);
     });
   }, [initializeParticles]);
 
   useEffect(() => {
     if (disableAnimations || !cardRef.current) return;
-
     const element = cardRef.current;
 
     const handleMouseEnter = () => {
       isHoveredRef.current = true;
       animateParticles();
-
-      if (enableTilt) {
-        gsap.to(element, {
-          rotateX: 5,
-          rotateY: 5,
-          duration: 0.3,
-          ease: "power2.out",
-          transformPerspective: 1000,
-        });
-      }
+      if (enableTilt) gsap.to(element, { rotateX: 5, rotateY: 5, duration: 0.3, ease: "power2.out", transformPerspective: 1000 });
     };
 
     const handleMouseLeave = () => {
       isHoveredRef.current = false;
       clearAllParticles();
-
-      if (enableTilt) {
-        gsap.to(element, {
-          rotateX: 0,
-          rotateY: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      }
-
-      if (enableMagnetism) {
-        gsap.to(element, {
-          x: 0,
-          y: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      }
+      if (enableTilt) gsap.to(element, { rotateX: 0, rotateY: 0, duration: 0.3, ease: "power2.out" });
+      if (enableMagnetism) gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: "power2.out" });
     };
 
     const handleMouseMove = (e) => {
       if (!enableTilt && !enableMagnetism) return;
-
       const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-
       if (enableTilt) {
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
-
-        gsap.to(element, {
-          rotateX,
-          rotateY,
-          duration: 0.1,
-          ease: "power2.out",
-          transformPerspective: 1000,
-        });
+        gsap.to(element, { rotateX: ((y - centerY) / centerY) * -10, rotateY: ((x - centerX) / centerX) * 10, duration: 0.1, ease: "power2.out", transformPerspective: 1000 });
       }
-
       if (enableMagnetism) {
-        const magnetX = (x - centerX) * 0.05;
-        const magnetY = (y - centerY) * 0.05;
-
-        magnetismAnimationRef.current = gsap.to(element, {
-          x: magnetX,
-          y: magnetY,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        magnetismAnimationRef.current = gsap.to(element, { x: (x - centerX) * 0.05, y: (y - centerY) * 0.05, duration: 0.3, ease: "power2.out" });
       }
     };
 
     const handleClick = (e) => {
       if (!clickEffect) return;
-
       const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-
-      const maxDistance = Math.max(
-        Math.hypot(x, y),
-        Math.hypot(x - rect.width, y),
-        Math.hypot(x, y - rect.height),
-        Math.hypot(x - rect.width, y - rect.height),
-      );
-
+      const maxDistance = Math.max(Math.hypot(x, y), Math.hypot(x - rect.width, y), Math.hypot(x, y - rect.height), Math.hypot(x - rect.width, y - rect.height));
       const ripple = document.createElement("div");
-      ripple.style.cssText = `
-        position: absolute;
-        width: ${maxDistance * 2}px;
-        height: ${maxDistance * 2}px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
-        left: ${x - maxDistance}px;
-        top: ${y - maxDistance}px;
-        pointer-events: none;
-        z-index: 1000;
-      `;
-
+      ripple.style.cssText = `position:absolute;width:${maxDistance * 2}px;height:${maxDistance * 2}px;border-radius:50%;background:radial-gradient(circle,rgba(${glowColor},0.4) 0%,rgba(${glowColor},0.2) 30%,transparent 70%);left:${x - maxDistance}px;top:${y - maxDistance}px;pointer-events:none;z-index:1000;`;
       element.appendChild(ripple);
-
-      gsap.fromTo(
-        ripple,
-        { scale: 0, opacity: 1 },
-        {
-          scale: 1,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          onComplete: () => ripple.remove(),
-        },
-      );
+      gsap.fromTo(ripple, { scale: 0, opacity: 1 }, { scale: 1, opacity: 0, duration: 0.8, ease: "power2.out", onComplete: () => ripple.remove() });
     };
 
     element.addEventListener("mouseenter", handleMouseEnter);
@@ -324,155 +233,63 @@ const ParticleCard = ({
       element.removeEventListener("click", handleClick);
       clearAllParticles();
     };
-  }, [
-    animateParticles,
-    clearAllParticles,
-    disableAnimations,
-    enableTilt,
-    enableMagnetism,
-    clickEffect,
-    glowColor,
-  ]);
+  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor]);
 
   return (
-    <div
-      ref={cardRef}
-      className={`${className} particle-container`}
-      style={{ ...style, position: "relative", overflow: "hidden" }}
-    >
+    <div ref={cardRef} className={`${className} particle-container`} style={{ ...style, position: "relative", overflow: "hidden" }}>
       {children}
     </div>
   );
 };
 
-// GLOBAL SPOTLIGHT
-const GlobalSpotlight = ({
-  gridRef,
-  disableAnimations = false,
-  enabled = true,
-  spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
-  glowColor = DEFAULT_GLOW_COLOR,
-}) => {
+const GlobalSpotlight = ({ gridRef, disableAnimations = false, enabled = true, spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS, glowColor = DEFAULT_GLOW_COLOR }) => {
   const spotlightRef = useRef(null);
-  const isInsideSection = useRef(false);
 
   useEffect(() => {
     if (disableAnimations || !gridRef?.current || !enabled) return;
-
     const spotlight = document.createElement("div");
     spotlight.className = "global-spotlight";
-    spotlight.style.cssText = `
-      position: fixed;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle,
-        rgba(${glowColor}, 0.15) 0%,
-        rgba(${glowColor}, 0.08) 15%,
-        rgba(${glowColor}, 0.04) 25%,
-        rgba(${glowColor}, 0.02) 40%,
-        rgba(${glowColor}, 0.01) 65%,
-        transparent 70%
-      );
-      z-index: 200;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen;
-    `;
+    spotlight.style.cssText = `position:fixed;width:800px;height:800px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(${glowColor},0.15) 0%,rgba(${glowColor},0.08) 15%,rgba(${glowColor},0.04) 25%,rgba(${glowColor},0.02) 40%,rgba(${glowColor},0.01) 65%,transparent 70%);z-index:200;opacity:0;transform:translate(-50%,-50%);mix-blend-mode:screen;`;
     document.body.appendChild(spotlight);
     spotlightRef.current = spotlight;
 
     const handleMouseMove = (e) => {
       if (!spotlightRef.current || !gridRef.current) return;
-
       const section = gridRef.current.closest(".bento-section");
       const rect = section?.getBoundingClientRect();
-      const mouseInside =
-        rect &&
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom;
-
-      isInsideSection.current = mouseInside || false;
+      const mouseInside = rect && e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
       const cards = gridRef.current.querySelectorAll(".magic-bento-card");
-
       if (!mouseInside) {
-        gsap.to(spotlightRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-        cards.forEach((card) =>
-          card.style.setProperty("--glow-intensity", "0"),
-        );
+        gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
+        cards.forEach((card) => card.style.setProperty("--glow-intensity", "0"));
         return;
       }
-
-      const { proximity, fadeDistance } =
-        calculateSpotlightValues(spotlightRadius);
+      const { proximity, fadeDistance } = calculateSpotlightValues(spotlightRadius);
       let minDistance = Infinity;
-
       cards.forEach((card) => {
         const cardRect = card.getBoundingClientRect();
         const centerX = cardRect.left + cardRect.width / 2;
         const centerY = cardRect.top + cardRect.height / 2;
-        const distance =
-          Math.hypot(e.clientX - centerX, e.clientY - centerY) -
-          Math.max(cardRect.width, cardRect.height) / 2;
+        const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
         const effectiveDistance = Math.max(0, distance);
         minDistance = Math.min(minDistance, effectiveDistance);
         let glowIntensity = 0;
         if (effectiveDistance <= proximity) glowIntensity = 1;
-        else if (effectiveDistance <= fadeDistance)
-          glowIntensity =
-            (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
-        updateCardGlowProperties(
-          card,
-          e.clientX,
-          e.clientY,
-          glowIntensity,
-          spotlightRadius,
-        );
+        else if (effectiveDistance <= fadeDistance) glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
+        updateCardGlowProperties(card, e.clientX, e.clientY, glowIntensity, spotlightRadius);
       });
-
-      gsap.to(spotlightRef.current, {
-        left: e.clientX,
-        top: e.clientY,
-        duration: 0.1,
-        ease: "power2.out",
-      });
-
-      const targetOpacity =
-        minDistance <= proximity
-          ? 0.8
-          : minDistance <= fadeDistance
-            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
-            : 0;
-      gsap.to(spotlightRef.current, {
-        opacity: targetOpacity,
-        duration: targetOpacity > 0 ? 0.2 : 0.5,
-        ease: "power2.out",
-      });
+      gsap.to(spotlightRef.current, { left: e.clientX, top: e.clientY, duration: 0.1, ease: "power2.out" });
+      const targetOpacity = minDistance <= proximity ? 0.8 : minDistance <= fadeDistance ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8 : 0;
+      gsap.to(spotlightRef.current, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.2 : 0.5, ease: "power2.out" });
     };
 
     const handleMouseLeave = () => {
-      isInsideSection.current = false;
-      gridRef.current
-        ?.querySelectorAll(".magic-bento-card")
-        .forEach((card) => card.style.setProperty("--glow-intensity", "0"));
-      if (spotlightRef.current)
-        gsap.to(spotlightRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+      gridRef.current?.querySelectorAll(".magic-bento-card").forEach((card) => card.style.setProperty("--glow-intensity", "0"));
+      if (spotlightRef.current) gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
     };
 
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
-
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
@@ -483,19 +300,16 @@ const GlobalSpotlight = ({
   return null;
 };
 
-// GRID COMPONENT
 const BentoCardGrid = ({ children, gridRef }) => (
   <div className="card-grid bento-section" ref={gridRef}>
     {children}
   </div>
 );
 
-// MOBILE DETECTION
 const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    const checkMobile = () =>
-      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -503,7 +317,6 @@ const useMobileDetection = () => {
   return isMobile;
 };
 
-// MAIN COMPONENT
 const MagicBento = ({
   textAutoHide = true,
   enableStars = true,
@@ -534,77 +347,62 @@ const MagicBento = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        {cardData.map((card, index) => {
-          const baseClassName = `magic-bento-card ${textAutoHide ? "magic-bento-card--text-autohide" : ""} ${enableBorderGlow ? "magic-bento-card--border-glow" : ""}`;
-          const cardProps = {
-            className: baseClassName,
-            style: {
-              backgroundColor: card.color,
+        {cardData.map((card, index) => (
+          <ParticleCard
+            key={index}
+            className="magic-bento-card magic-bento-card--border-glow"
+            style={{
               "--glow-color": glowColor,
-            },
-          };
+              "--explore-color": card.exploreColor,
+              "--card-tint-color": card.cardTintColor,
+              "--card-border-glow": card.cardBorderGlow,
+              "--card-shadow-glow": card.cardShadowGlow,
+            }}
+            disableAnimations={shouldDisableAnimations}
+            particleCount={particleCount}
+            glowColor={glowColor}
+            enableTilt={enableTilt}
+            clickEffect={clickEffect}
+            enableMagnetism={enableMagnetism}
+          >
+            <div className="magic-bento-card__header">
+              {card.icon && (
+                <div
+                  className="magic-bento-card__icon-wrap"
+                  style={{ background: card.iconBg }}
+                >
+                  <img
+                    src={card.icon}
+                    alt={`${card.title} icon`}
+                    className="magic-bento-card__icon"
+                  />
+                </div>
+              )}
+            </div>
 
-          return (
-            <ParticleCard
-              key={index}
-              className={`magic-bento-card magic-bento-card--border-glow`}
-              style={{
-                backgroundColor: "#060010",
-                "--glow-color": glowColor,
-              }}
-              disableAnimations={shouldDisableAnimations}
-              particleCount={particleCount}
-              glowColor={glowColor}
-              enableTilt={enableTilt}
-              clickEffect={clickEffect}
-              enableMagnetism={enableMagnetism}
-            >
-              <div className="magic-bento-card__header">
-                {card.icon && (
-                  <div
-                    className="magic-bento-card__icon-wrap"
-                    style={{
-                      background: card.iconBg,
-                      color: card.iconColor,
-                    }}
-                  >
-                    <img
-                      src={card.icon}
-                      alt={`${card.title} icon`}
-                      className="magic-bento-card__icon"
-                    />
-                  </div>
-                )}
-              </div>
-
-              <div className="magic-bento-card__content">
-                <h1 className="magic-bento-card__title">{card.title}</h1>
-                <small className="magic-bento-card__small">
-                  {card.smallText}
-                </small>
-                <button className="magic-bento-card__button">
-                  Explore
-                  <svg
-                    className="bento-btn"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    color="#ffffff"
-                    fill="none"
-                    stroke="#ffffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M18.5 12L4.99997 12" />
-                    <path d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6" />
-                  </svg>
-                </button>
-              </div>
-            </ParticleCard>
-          );
-        })}
+            <div className="magic-bento-card__content">
+              <h1 className="magic-bento-card__title">{card.title}</h1>
+              <small className="magic-bento-card__small">{card.smallText}</small>
+              <button className="magic-bento-card__button">
+                Explore
+                <svg
+                  className="bento-btn"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18.5 12L4.99997 12" />
+                  <path d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6" />
+                </svg>
+              </button>
+            </div>
+          </ParticleCard>
+        ))}
       </BentoCardGrid>
     </>
   );
