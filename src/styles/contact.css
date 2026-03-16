@@ -1,34 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Storm&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
+/* ─── BASE ─────────────────────────────────────────────────── */
+
 .contact-logo-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 44px 40px 80px;
+  position: relative;
 }
 
 .contact-logo img {
-  width: 14%;
-  position: absolute;
-  top: -2%;
+  width: 14%; 
 }
 
 .contact-title-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
 }
 
 .contact-title {
-  width: 44%;
+  width: min(44%, 700px);
   text-align: center;
   padding: 60px 0;
 }
 
 .contact-title h1 {
-  font-size: 110px;
+  font-size: clamp(48px, 8vw, 110px);   /* scales with viewport */
   font-family: "Archivo Black", sans-serif;
-  padding: 0 0 60px;
+  padding: 0 0 clamp(24px, 4vw, 60px);
+  line-height: 1.05;
 }
 
 .contact-title h1 span {
@@ -43,7 +46,7 @@
 }
 
 .contact-paragraph {
-  font-size: 30px;
+  font-size: clamp(16px, 2vw, 30px);
   color: #a8a8a8;
 }
 
@@ -63,13 +66,8 @@
 }
 
 @keyframes softPulseContact {
-  0%,
-  100% {
-    background: rgba(255, 255, 255, 0.05);
-  }
-  50% {
-    background: rgba(255, 255, 255, 0.15);
-  }
+  0%, 100% { background: rgba(255, 255, 255, 0.05); }
+  50%       { background: rgba(255, 255, 255, 0.15); }
 }
 
 .back-home-btn {
@@ -79,21 +77,21 @@
     hsl(158.17deg 47.5% 55.58%) 50%,
     hsl(130.6deg 68.68% 48.5%) 100%
   );
-  font-size: 25px;
+  font-size: clamp(14px, 1.5vw, 25px);
   font-weight: 600;
   padding: 13px 36px;
   border: 2px solid black;
   border-radius: 30px;
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    backdrop-filter 0.3s ease,
-    box-shadow 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease,
+              backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 
 .back-home-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
+
+/* ─── CONTACT SECTION ───────────────────────────────────────── */
 
 .contact-section {
   display: flex;
@@ -103,15 +101,18 @@
   background: #000;
   color: #fff;
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
+
+/* ─── LEFT INFO COLUMN ──────────────────────────────────────── */
 
 .contact-info {
   width: 35%;
+  flex-shrink: 0;
 }
 
 .contact-info h1 {
-  font-size: 46px;
+  font-size: clamp(28px, 3vw, 46px);
   margin-bottom: 40px;
 }
 
@@ -119,32 +120,34 @@
   display: flex;
   gap: 16px;
   margin-bottom: 28px;
+  align-items: flex-start;
 }
 
 .icon {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
   display: grid;
   place-items: center;
   font-size: 18px;
+  flex-shrink: 0;
 }
 
 .info-item h4 {
   margin: 0;
-  font-size: 22px;
-  padding: 10px 0;
+  font-size: clamp(16px, 1.5vw, 22px);
+  padding: 4px 0 6px;
 }
 
 .info-item p {
   margin: 4px 0;
   color: #929395;
-  font-size: 24px;
+  font-size: clamp(14px, 1.4vw, 20px);
 }
 
 .info-item small {
   color: #9ca3af;
-  font-size: 24px;
+  font-size: clamp(13px, 1.2vw, 18px);
 }
 
 .follow {
@@ -155,17 +158,20 @@
 
 .follow h2 {
   padding: 26px 0;
+  font-size: clamp(18px, 1.8vw, 28px);
 }
 
 .socials span {
-  margin-right: 24px;
+  margin-right: 20px;
   color: #9ca3af;
   cursor: pointer;
-  font-size: 22px;
+  font-size: clamp(14px, 1.3vw, 20px);
 }
 
+/* ─── RIGHT FORM BOX ─────────────────────────────────────────── */
+
 .contact-form-box {
-  width: 65%;
+  flex: 1;
   background: linear-gradient(180deg, #1e1e1e, #0c0c0c);
   border: 2px solid #292929;
   border-radius: 24px;
@@ -184,10 +190,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;       /* prevents flex children from overflowing */
 }
 
 .field label {
-  font-size: 24px;
+  font-size: clamp(14px, 1.4vw, 20px);
   color: #e5e7eb;
 }
 
@@ -198,13 +205,16 @@
 input,
 select,
 textarea {
+  width: 100%;
+  box-sizing: border-box;     /* crucial: padding stays inside the width */
   background: #0e0e0e;
   border: 1px solid #262626;
   border-radius: 10px;
-  padding: 16px;
-  margin: 18px 0;
+  padding: 14px 16px;
+  margin: 8px 0 0;
   color: #f9fafb;
-  font-size: 24px;
+  font-size: clamp(14px, 1.3vw, 20px);
+  font-family: "Poppins", sans-serif;
 }
 
 textarea {
@@ -229,31 +239,27 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   width: 100%;
   margin-top: 30px;
-  padding: 28px 0;
+  padding: 20px 0;
   border-radius: 12px;
   border: none;
-  font-size: 20px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: white;
   background: linear-gradient(90deg, #7c3aed, #06b6d4);
   cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .send-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .send-btn svg {
   transform: rotate(-45deg);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .send-btn:hover svg {
@@ -261,61 +267,110 @@ select:focus {
 }
 
 .note {
-  margin-top: 40px;
+  margin-top: 24px;
   text-align: center;
   color: #9ca3af;
-  font-size: 20px;
+  font-size: clamp(13px, 1.2vw, 18px);
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
+/* ─── TABLET  (≤ 1100px) ─────────────────────────────────────── */
+
+@media (max-width: 1100px) {
   .contact-section {
-    flex-direction: column;
-    padding: 40px;
+    padding: 60px 40px;
+    gap: 40px;
   }
 
-  .contact-info,
   .contact-form-box {
-    width: 100%;
+    padding: 36px 32px;
   }
+}
 
-  .form-row {
-    flex-direction: column;
-  }
+/* ─── MOBILE  (≤ 768px) ──────────────────────────────────────── */
 
+@media (max-width: 768px) {
+
+  /* Header */
   .contact-logo-container {
-    padding: 44px 0 80px;
+    padding: 24px 20px 40px;
+  }
+
+  .contact-logo img {
+    width: 100px;
   }
 
   .back-home-btn {
-    font-size: 16px;
+    font-size: 13px;
+    padding: 10px 20px;
   }
 
-  .contact-title h1 {
-    font-size: 75px;
+  /* Title area */
+  .contact-title {
+    width: 90%;
+    padding: 30px 0;
   }
 
-  .contact-paragraph {
-    font-size: 14px;
+  /* Stack info + form */
+  .contact-section {
+    flex-direction: column;
+    padding: 32px 20px;
+    gap: 40px;
+    margin: 0 0 40px;
   }
 
-  .socials span {
-    font-size: 16px;
+  .contact-info {
+    width: 100%;
   }
 
+  .contact-form-box {
+    width: 100%;
+    padding: 28px 20px;
+    box-sizing: border-box;
+  }
+
+  /* Stack form rows on mobile */
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  /* Inputs already have box-sizing: border-box so no negative margins needed */
   input,
   select,
   textarea {
-    font-size: 14px;
-    margin: 18px -30px;
+    font-size: 15px;
+    padding: 12px 14px;
   }
 
   .send-btn {
-    font-size: 16px;
-    padding: 14px 0;
+    padding: 16px 0;
   }
 
-  .note {
-    font-size: 16px;
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .socials span {
+    margin-right: 0;
+  }
+}
+
+/* ─── SMALL MOBILE  (≤ 400px) ───────────────────────────────── */
+
+@media (max-width: 400px) {
+  .contact-logo img {
+    width: 80px;
+  }
+
+  .back-home-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .contact-form-box {
+    padding: 20px 14px;
   }
 }
