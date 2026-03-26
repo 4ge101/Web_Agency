@@ -77,8 +77,10 @@
 }
 
 .project-card-container {
-  width: 33%;
   padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
 }
 
 .card-container {
@@ -152,11 +154,6 @@
   border-radius: 50%;
 }
 
-.project-card-container {
-  width: 33%;
-  padding: 10px;
-}
-
 .card-container {
   position: relative;
   width: 100%;
@@ -202,38 +199,6 @@
 
 .card-container:hover::after {
   opacity: 1;
-}
-
-/* TOP TAG */
-.card-title-top {
-  position: absolute;
-  top: 12%;
-  left: 10%;
-  z-index: 2;
-}
-
-.card-title-top span {
-  font-weight: 500;
-  border-radius: 22px;
-  padding: 10px 22px;
-  background: linear-gradient(90deg, #3f2b96 0%, #a8c0ff 100%);
-  color: #ffffff;
-  font-size: 1rem;
-}
-
-/* CIRCLE ICON */
-.circle-icon-container {
-  position: absolute;
-  top: 10%;
-  right: 10%;
-  background: #444242;
-  padding: 15px;
-  border: 2px solid #555353;
-  border-radius: 50%;
-  z-index: 2;
-  transition:
-    box-shadow 0.5s ease,
-    transform 0.5s ease;
 }
 
 /* glow on card hover */
