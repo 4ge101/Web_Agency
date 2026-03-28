@@ -37,7 +37,22 @@ const teamMembers = [
       twitter: "#",
     },
   },
-];
+ {
+    name: "Ansh Bohara",
+    title: "Cybersecurity",
+    role: "Security . Testing",
+    description:
+      "Full-Stack Developer & Prompt Engineer skilled in building modern web apps and AI-powered solutions. Focused on clean code, scalable systems, and creating smart, efficient experiences.",
+    img: "https://via.placeholder.com/400x500/1a1a2e/ffffff?text=AA",
+    skills: ["Next.js", "Python", "AI/ML", "TypeScript", "PostgreSQL"],
+    accent: "#e879f9",
+    number: "03",
+    social: {
+      github: "#",
+      linkedin: "#",
+      twitter: "#",
+    },
+  },];
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
