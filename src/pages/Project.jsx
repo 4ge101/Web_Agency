@@ -62,7 +62,7 @@ const ProjectCard = ({ image, category, title, link }) => (
     <div className="card-title-top">
       <span>{category}</span>
     </div>
-    <span className="circle-icon-container">
+    <span ssName="circle-icon-container">
       <LocationIcon />
     </span>
     <div className="card-title-bottom">
